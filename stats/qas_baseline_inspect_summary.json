@@ -1,0 +1,189 @@
+{
+  "totals": {
+    "total_qas": 3434,
+    "kept": 1342,
+    "rejected": 2092,
+    "keep_rate_pct": 39.08
+  },
+  "per_persona": [
+    {
+      "persona": "basic",
+      "kept": 534,
+      "rejected": 1181,
+      "total": 1715,
+      "keep_rate_pct": 31.14
+    },
+    {
+      "persona": "professional",
+      "kept": 808,
+      "rejected": 911,
+      "total": 1719,
+      "keep_rate_pct": 47.0
+    }
+  ],
+  "per_reference_type": [
+    {
+      "reference_type": "Internal",
+      "kept": 934,
+      "rejected": 1402,
+      "total": 2336,
+      "keep_rate_pct": 39.98
+    },
+    {
+      "reference_type": "External",
+      "kept": 408,
+      "rejected": 690,
+      "total": 1098,
+      "keep_rate_pct": 37.16
+    },
+    {
+      "reference_type": "None",
+      "kept": 0,
+      "rejected": 0,
+      "total": 0,
+      "keep_rate_pct": 0.0
+    }
+  ],
+  "length_shape": {
+    "question_words": {
+      "mean": 20.453800298062593,
+      "median": 20.0,
+      "std": 5.792913833677453,
+      "p25": 16.0,
+      "p75": 25.0,
+      "min": 8.0,
+      "max": 44.0
+    },
+    "answer_words": {
+      "mean": 19.789865871833086,
+      "median": 19.0,
+      "std": 7.917455209938648,
+      "p25": 14.0,
+      "p75": 24.75,
+      "min": 2.0,
+      "max": 60.0
+    },
+    "question_chars": {
+      "mean": 126.97839046199702,
+      "median": 121.0,
+      "std": 38.744360421530736,
+      "p25": 96.0,
+      "p75": 155.0,
+      "min": 50.0,
+      "max": 250.0
+    },
+    "answer_chars": {
+      "mean": 121.95081967213115,
+      "median": 118.0,
+      "std": 50.92081133386358,
+      "p25": 82.25,
+      "p75": 155.0,
+      "min": 17.0,
+      "max": 387.0
+    },
+    "question_sentences": {
+      "mean": 1.0007451564828613,
+      "median": 1.0,
+      "std": 0.027287382151417294,
+      "p25": 1.0,
+      "p75": 1.0,
+      "min": 1.0,
+      "max": 2.0
+    },
+    "answer_sentences": {
+      "mean": 1.0007451564828613,
+      "median": 1.0,
+      "std": 0.027287382151417294,
+      "p25": 1.0,
+      "p75": 1.0,
+      "min": 1.0,
+      "max": 2.0
+    },
+    "answer_length_buckets": {
+      "11–25": 930,
+      "26–50": 283,
+      "≤10": 127,
+      ">50": 2
+    },
+    "histograms": {
+      "q_words": {
+        "[0,5)": 0,
+        "[5,10)": 3,
+        "[10,15)": 200,
+        "[15,20)": 444,
+        "[20,30)": 602,
+        "[30,50)": 93,
+        "[50,∞)": 0
+      },
+      "a_words": {
+        "[0,5)": 5,
+        "[5,10)": 88,
+        "[10,15)": 287,
+        "[15,20)": 327,
+        "[20,30)": 494,
+        "[30,50)": 138,
+        "[50,∞)": 3
+      }
+    }
+  },
+  "quality_duplicates": {
+    "duplicate_rate": 0.0,
+    "duplicate_count": 0,
+    "unique_count": 1342
+  },
+  "judge_analytics": {
+    "judged_total": 3434,
+    "kept_after_judge": 1342,
+    "dropped_by_judge": 2092,
+    "rejection_reason_counts": {
+      "source_only": 993,
+      "target_only": 961,
+      "incorrect_answer": 93,
+      "other": 45
+    },
+    "persona_x_reason": [
+      {
+        "persona": "basic",
+        "incorrect_answer": 35,
+        "other": 26,
+        "source_only": 554,
+        "target_only": 566
+      },
+      {
+        "persona": "professional",
+        "incorrect_answer": 58,
+        "other": 19,
+        "source_only": 439,
+        "target_only": 395
+      }
+    ],
+    "per_reason_avg_lengths": [
+      {
+        "rejection_reason": "incorrect_answer",
+        "q_words": 19.77,
+        "a_words": 20.1
+      },
+      {
+        "rejection_reason": "other",
+        "q_words": 16.53,
+        "a_words": 16.67
+      },
+      {
+        "rejection_reason": "source_only",
+        "q_words": 18.05,
+        "a_words": 17.28
+      },
+      {
+        "rejection_reason": "target_only",
+        "q_words": 17.41,
+        "a_words": 17.29
+      }
+    ]
+  },
+  "diversity": {
+    "ttr_by_persona": {
+      "basic": 0.093744,
+      "professional": 0.062069
+    }
+  }
+}

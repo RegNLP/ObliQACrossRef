@@ -1,0 +1,3011 @@
+{
+  "input_rows": 1560,
+  "items_emitted": 861,
+  "skipped_rows": 699,
+  "title_targets_seen": 608,
+  "drop_title_targets": true,
+  "model": "gpt-4o",
+  "timestamp": "2025-10-12T21:51:24+00:00",
+  "details_sample": [
+    {
+      "row": 0,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 2,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 3,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 5,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 6,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 7,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 8,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 11,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 13,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 15,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 17,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 19,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 22,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 23,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 25,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 27,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 28,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 29,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 33,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 34,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 39,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 40,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 41,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 42,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 43,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 44,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 45,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 46,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 47,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 49,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 50,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 51,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 52,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 56,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 57,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 58,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 59,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 60,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 61,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 71,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 72,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 78,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 97,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 98,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 102,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 104,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 105,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 106,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 107,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 108,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 109,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 110,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 111,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 112,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 114,
+      "errors": [
+        "deduped: identical content key"
+      ]
+    },
+    {
+      "row": 119,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 120,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 121,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 122,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 123,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 124,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 125,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 126,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 127,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 133,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 138,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 139,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 141,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 142,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 143,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 144,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 147,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 151,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 155,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 158,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 160,
+      "errors": [
+        "deduped: identical content key"
+      ]
+    },
+    {
+      "row": 164,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 170,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 171,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 172,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 174,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 183,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 186,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 187,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 188,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 191,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 202,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 206,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 207,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 210,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 211,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 218,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 221,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 224,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 225,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 226,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 230,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 231,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 234,
+      "errors": [
+        "deduped: identical content key"
+      ]
+    },
+    {
+      "row": 235,
+      "errors": [
+        "deduped: identical content key"
+      ]
+    },
+    {
+      "row": 236,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 237,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 239,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 240,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 241,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 242,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 243,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 244,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 246,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 281,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 284,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 295,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 296,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 297,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 298,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 299,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 301,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 302,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 303,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 304,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 305,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 306,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 307,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 308,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 309,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 312,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 315,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 316,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 317,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 318,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 319,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 320,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 325,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 328,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 329,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 332,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 333,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 334,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 335,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 336,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 337,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 338,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 340,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 341,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 342,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 343,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 344,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 346,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 347,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 348,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 349,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 350,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 351,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 352,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 353,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 354,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 355,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 356,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 357,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 358,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 359,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 360,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 361,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 362,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 365,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 366,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 367,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 369,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 372,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 374,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 375,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 376,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 377,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 378,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 379,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 380,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 381,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 382,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 385,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 386,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 387,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 389,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 390,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 400,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 406,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 409,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 415,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 421,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 422,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 425,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 431,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 432,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 433,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 435,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 436,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 440,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 442,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 443,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 444,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 445,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 446,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 447,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 448,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 449,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 451,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 454,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 455,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 457,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 459,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 460,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 462,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 463,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 467,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 469,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 470,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 475,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 476,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 477,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 482,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 487,
+      "errors": [
+        "deduped: identical content key"
+      ]
+    },
+    {
+      "row": 494,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 495,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 496,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 497,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 498,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 499,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 514,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 529,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 544,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 545,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 546,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 551,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 552,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 554,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 556,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 557,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 559,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 560,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 563,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 564,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 566,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 567,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 568,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 569,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 570,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 571,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 579,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 580,
+      "errors": [
+        "deduped: identical content key"
+      ]
+    },
+    {
+      "row": 582,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 583,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 584,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 585,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 586,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 588,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 589,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 590,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 591,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 593,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 596,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 597,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 604,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 605,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 606,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 608,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 616,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 617,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 618,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 619,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 620,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 621,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 623,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 624,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 625,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 626,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 627,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 629,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 631,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 632,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 637,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 638,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 639,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 641,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 642,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 644,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 645,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 646,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 647,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 648,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 649,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 650,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 654,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 660,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 661,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 663,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 664,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 665,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 666,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 669,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 670,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 671,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 673,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 677,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 678,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 692,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 694,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 695,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 696,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 698,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 699,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 702,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 711,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 717,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 718,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 719,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 720,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 721,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 722,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 723,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 724,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 725,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 726,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 727,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 728,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 729,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 730,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 731,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 732,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 733,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 734,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 735,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 736,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 738,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 743,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 745,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 746,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 747,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 748,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 749,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 750,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 751,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 752,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 753,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 754,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 755,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 756,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 757,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 758,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 760,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 761,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 763,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 766,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 768,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 769,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 772,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 773,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 774,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 775,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 776,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 777,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 783,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 784,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 788,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 795,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 796,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 797,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 798,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 800,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 801,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 802,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 804,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 806,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 807,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 808,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 809,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 810,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 812,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 813,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 814,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 819,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 825,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 826,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 827,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 835,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 836,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 842,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 843,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 844,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 845,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 846,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 847,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 848,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 850,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 851,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 852,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 853,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 858,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 859,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 860,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 868,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 869,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 870,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 872,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 875,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 877,
+      "errors": [
+        "deduped: identical content key"
+      ]
+    },
+    {
+      "row": 878,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 883,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 888,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 890,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 896,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 897,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 900,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 906,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 913,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 914,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 915,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 920,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 923,
+      "errors": [
+        "deduped: identical content key"
+      ]
+    },
+    {
+      "row": 930,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 931,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 935,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 936,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 938,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 939,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 940,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 942,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 944,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 945,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 946,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 947,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 948,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 949,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 955,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 957,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 963,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 964,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 965,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 966,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 967,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 968,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 969,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 970,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 971,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 972,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 973,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 974,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 976,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 977,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 978,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 979,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 980,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 981,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 982,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 988,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 989,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 990,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 992,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 998,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1005,
+      "errors": [
+        "deduped: identical content key"
+      ]
+    },
+    {
+      "row": 1006,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 1009,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1010,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1011,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1012,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1013,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1014,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1026,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1027,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1028,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1029,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1030,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1038,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1040,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1041,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1042,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1046,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 1047,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1048,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1049,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1050,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1051,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1052,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1054,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1056,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 1062,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 1063,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 1064,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 1066,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1067,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1068,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1069,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1070,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1071,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1073,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1074,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1075,
+      "errors": [
+        "adjusted: semantic_hook looked like a citation; clearing"
+      ]
+    },
+    {
+      "row": 1077,
+      "errors": [
+        "skipped: missing valid source or target"
+      ]
+    },
+    {
+      "row": 1078,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1079,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    },
+    {
+      "row": 1081,
+      "errors": [
+        "skipped: target_is_title"
+      ]
+    }
+  ]
+}

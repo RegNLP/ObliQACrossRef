@@ -1,0 +1,10 @@
+{
+  "rows_loaded": 1560,
+  "kept_candidates": 862,
+  "pairs_processed": 862,
+  "qas_created": 3434,
+  "dropped_dupe_qs": 14,
+  "skipped_empty_text": 0,
+  "skipped_model_fail": 0,
+  "dropped_title_like_targets": 698
+}
