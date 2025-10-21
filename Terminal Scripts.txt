@@ -135,14 +135,15 @@ python -u src/judge_qas_baseline.py \
   --rate_delay 0.2
 
 -------
-python -u src/make_annotation_sample.py \
-  --schema-kept outputs/qas_from_schema_V2_kept.jsonl \
-  --schema-rejected outputs/qas_from_schema_V2_eliminated.jsonl \
-  --prompt-kept outputs/qas_baseline_judgement_kept.jsonl \
-  --prompt-rejected outputs/qas_baseline_judgement_eliminated.jsonl \
-  --sample-size 50 \
-  --seed 13 \
-  --out-prefix outputs/annotation_sample_50
+python -u src/make_annotation_subsets_per_method. \
+  --schema_kept outputs/qas_from_schema_V2_kept.jsonl \
+  --schema_elim outputs/qas_from_schema_V2_eliminated.jsonl \
+  --prompt_kept outputs/qas_baseline_judgement_kept.jsonl \
+  --prompt_elim outputs/qas_baseline_judgement_eliminated.jsonl \
+  --outdir ./annotation_subsets_per_method \
+  --seed 13
+
+
 
 python -u src/jsonl_to_csv_qas.py \
   --input outputs/annotation_sample_50.jsonl \

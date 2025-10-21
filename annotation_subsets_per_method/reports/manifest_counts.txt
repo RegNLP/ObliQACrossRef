@@ -1,0 +1,7 @@
+=== Mode: BOTH-PERSONAS ===
+Annotators: 3
+Per-method quotas (defaults): kappa=60, kept_single=75, elim_single=60
+Shared kept κ-block: total=120 → {'total': 120, 'by_method_persona': {('Prompt', None): 60, ('Schema', None): 60}}
+Annotator A: total items = 210 (shared + singles), kept singles=50, elim singles=40
+Annotator B: total items = 210 (shared + singles), kept singles=50, elim singles=40
+Annotator C: total items = 210 (shared + singles), kept singles=50, elim singles=40
