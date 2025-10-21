@@ -53,10 +53,28 @@ The ObliQA-CrossRef dataset was constructed in two stages:
 
 ### Statistical grounding
 
+The sample sizes were derived using the **Wald confidence interval formula** for proportions:
+
+$$
+E = z \times \sqrt{ \frac{p(1-p)}{n} }
+$$
+
+Rearranging for ( n ):
+
+$$
+n = \frac{z^2 \times p(1-p)}{E^2}
+$$
+
+Where:
+
+* ( z = 1.96 ) for 95% confidence level,
+* ( p ) = expected proportion (worst-case = 0.5),
+* ( E ) = desired half-width of the confidence interval (precision).
+
 | Estimate            | Desired half-width (E) | Expected proportion (p) | Formula                 |             Result |
 | ------------------- | ---------------------: | ----------------------: | ----------------------- | -----------------: |
 | Precision of Kept   |                  ± 6 % |        0.5 (worst-case) | n=(1.96² × p(1-p)) / E² |              ≈ 270 |
-| False-negative rate |                  ± 5 % |                    0.10 | same formula            |              ≈ 120 |
+| False-negative rate |                  ± 5 % |                    0.10 | n=(1.96² × p(1-p)) / E² |              ≈ 120 |
 | Reliability (κ)     |      ± 0.10 half-width |          3-rater design | empirical simulation    | 120 triple-labeled |
 | Human time          |           3 min / item |    ≤ 10.5 h / annotator | fits these values       |                    |
 
