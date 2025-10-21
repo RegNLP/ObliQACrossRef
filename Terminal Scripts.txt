@@ -1,0 +1,160 @@
+cd /Users/tuba.gokhan/Documents/GitHub/ObliQACrossRef
+
+# 1) in your shell session
+export OPENAI_API_KEY=""
+
+python src/generate_qas_baseline.py \
+  --input_csv data/CrossReferenceData.csv \
+  --output_jsonl outputs/qas_baseline_generation.jsonl \
+  --report_json outputs/qas_baseline_generationreport.json \
+  --model gpt-4o \
+  --max_q_per_pair 2 \
+  --sample_n 3 \
+  --dedup \
+  --verbose
+
+
+pip install google-generativeai
+export GOOGLE_API_KEY=""
+
+python src/judge_qas_baseline.py \
+  --input_jsonl outputs/qas_baseline_generation.jsonl \
+  --kept_jsonl outputs/qas_baseline_judgement_kept.jsonl \
+  --eliminated_jsonl outputs/qas_baseline_judgement_eliminated.jsonl \
+  --report_json outputs/qas_baseline_judging_report.json \
+  --model gemini-2.5-pro \
+  --verbose
+
+mkdir -p stats
+
+python src/inspect_qas_baseline.py \
+  --kept_jsonl outputs/qas_baseline_judgement_kept.jsonl \
+  --rejected_jsonl outputs/qas_baseline_judgement_eliminated.jsonl \
+  --out_summary_json stats/qas_baseline_inspect_summary.json \
+  --persona_csv stats/qas_baseline_persona_stats.csv \
+  --reasons_csv stats/qas_baseline_rejection_pivot.csv \
+
+  --length_bins_csv stats/qas_baseline_length_hists.csv
+
+
+
+———
+
+
+# run a small subset to test
+python src/01_extract_schemas.py \
+  --input_csv data/CrossReferenceData.csv \
+  --output_jsonl outputs/extracted_schema.jsonl \
+  --sample_n 30 --sample_seed 13 \
+  --model gpt-4o \
+  --drop_title_targets
+
+#full
+python src/01_extract_schemas.py \
+  --input_csv data/CrossReferenceData.csv \
+  --output_jsonl outputs/extracted_schema.jsonl \
+  --model gpt-4o \
+  --drop_title_targets
+
+
+# dry run (no LLM)
+
+python -u src/02_generate_qas_from_schema.py \
+  --input_jsonl outputs/extracted_schema.jsonl \
+  --output_jsonl outputs/qas_from_schema.jsonl \
+  --report_json outputs/qas_from_schema_report.json \
+  --model gpt-4o \
+  --dry_run \
+  --drop_title_targets \
+  --verbose
+
+# small run
+python -u src/02_generate_qas_from_schema.py \
+  --input_jsonl outputs/extracted_schema.jsonl \
+  --output_jsonl outputs/qas_from_schema.jsonl \
+  --report_json outputs/qas_from_schema_report.json \
+  --model gpt-4o \
+  --row_sample_n 5 \
+  --max_q_per_pair 2 \
+  --sample_n 3 \
+  --temperature 0.3 \
+  --seed 13 \
+  --dedup \
+  --drop_title_targets \
+  --verbose
+
+
+# full run
+python -u src/02_generate_qas_from_schema.py \
+  --input_jsonl outputs/extracted_schema.jsonl \
+  --output_jsonl outputs/qas_from_schema.jsonl \
+  --report_json outputs/qas_from_schema_report.json \
+  --model gpt-4o \
+  --max_q_per_pair 2 \
+  --sample_n 3 \
+  --temperature 0.3 \
+  --seed 13 \
+  --dedup \
+  --drop_title_targets \
+  --verbose
+
+--
+python -u src/judge_qas_baseline.py \
+  --input_jsonl outputs/qas_from_schema.jsonl \
+  --kept_jsonl outputs/qas_from_schema_kept.jsonl \
+  --eliminated_jsonl outputs/qas_from_schema_eliminated.jsonl \
+  --report_json outputs/qas_from_schema_judge_report.json \
+  --model gemini-2.5-pro \
+  --verbose \
+  --rate_delay 0.2
+
+---
+python -u src/02_generate_qas_from_schema_V2.py \
+  --input_jsonl outputs/extracted_schema.jsonl \
+  --output_jsonl outputs/qas_from_schema_V2_always.jsonl \
+  --report_json outputs/qas_from_schema_report_V2_always.json \
+  --model gpt-4o \
+  --max_q_per_pair 2 \
+  --sample_n 3 \
+  --temperature 0.3 \
+  --seed 13 \
+  --dedup \
+  --drop_title_targets \
+  --dual_anchors_mode always \
+  --no_citations \
+  --row_sample_n 20 \
+  --row_sample_seed 13 \
+  --verbose
+python -u src/judge_qas_baseline.py \
+  --input_jsonl outputs/qas_from_schema_V2_always.jsonl \
+  --kept_jsonl outputs/qas_from_schema_V2_kept.jsonl \
+  --eliminated_jsonl outputs/qas_from_schema_V2_eliminated.jsonl \
+  --report_json outputs/qas_from_schema_V2_judge_report.json \
+  --model gemini-2.5-pro \
+  --verbose \
+  --rate_delay 0.2
+
+-------
+python -u src/make_annotation_sample.py \
+  --schema-kept outputs/qas_from_schema_V2_kept.jsonl \
+  --schema-rejected outputs/qas_from_schema_V2_eliminated.jsonl \
+  --prompt-kept outputs/qas_baseline_judgement_kept.jsonl \
+  --prompt-rejected outputs/qas_baseline_judgement_eliminated.jsonl \
+  --sample-size 50 \
+  --seed 13 \
+  --out-prefix outputs/annotation_sample_50
+
+python -u src/jsonl_to_csv_qas.py \
+  --input outputs/annotation_sample_50.jsonl \
+  --output outputs/annotation_sample_50.csv
+
+
+
+
+
+
+
+
+
+
+

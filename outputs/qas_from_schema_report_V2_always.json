@@ -1,0 +1,12 @@
+{
+  "rows_loaded": 861,
+  "kept_candidates": 861,
+  "pairs_processed": 861,
+  "qas_created": 1717,
+  "dropped_dupe_qs": 15,
+  "skipped_empty_text": 0,
+  "skipped_model_fail": 0,
+  "skipped_title_targets": 0,
+  "model": "gpt-4o",
+  "dual_anchors_mode": "always"
+}

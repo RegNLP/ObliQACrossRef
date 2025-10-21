@@ -1,0 +1,38 @@
+{
+  "judge_model": "gemini-2.5-pro",
+  "total_candidates_judged": 1717,
+  "total_kept": 624,
+  "total_eliminated": 1093,
+  "pass_rate_pct": 36.34,
+  "duration_seconds": 19683.94,
+  "per_reason_counts": {
+    "target_only": 655,
+    "source_only": 295,
+    "incorrect_answer": 119,
+    "other": 24
+  },
+  "per_persona": {
+    "basic": {
+      "count": 856,
+      "kept": 246,
+      "keep_rate": 28.74,
+      "rejections_by_reason": {
+        "target_only": 396,
+        "source_only": 158,
+        "incorrect_answer": 43,
+        "other": 13
+      }
+    },
+    "professional": {
+      "count": 861,
+      "kept": 378,
+      "keep_rate": 43.9,
+      "rejections_by_reason": {
+        "target_only": 259,
+        "source_only": 137,
+        "incorrect_answer": 76,
+        "other": 11
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+Annotation Sample Report
+=======================
+
+Seed: 13
+Inputs:
+  schema_kept: outputs/qas_from_schema_V2_kept.jsonl
+  schema_rejected: outputs/qas_from_schema_V2_eliminated.jsonl
+  prompt_kept: outputs/qas_baseline_judgement_kept.jsonl
+  prompt_rejected: outputs/qas_baseline_judgement_eliminated.jsonl
+
+Total sample size (requested): 50
+Total sampled (actual): 50
+
+Input sizes by (method, persona, status):
+  ('prompt', 'basic', 'kept'): 534
+  ('prompt', 'basic', 'rejected'): 1181
+  ('prompt', 'professional', 'kept'): 808
+  ('prompt', 'professional', 'rejected'): 911
+  ('schema', 'basic', 'kept'): 246
+  ('schema', 'basic', 'rejected'): 610
+  ('schema', 'professional', 'kept'): 378
+  ('schema', 'professional', 'rejected'): 483
+
+Planned allocations by (method, persona, status):
+  ('prompt', 'basic', 'kept'): 5
+  ('prompt', 'basic', 'rejected'): 11
+  ('prompt', 'professional', 'kept'): 8
+  ('prompt', 'professional', 'rejected'): 9
+  ('schema', 'basic', 'kept'): 2
+  ('schema', 'basic', 'rejected'): 6
+  ('schema', 'professional', 'kept'): 4
+  ('schema', 'professional', 'rejected'): 5
+
+Actual sampled by (method, persona, status):
+  ('prompt', 'basic', 'kept'): 5
+  ('prompt', 'basic', 'rejected'): 11
+  ('prompt', 'professional', 'kept'): 8
+  ('prompt', 'professional', 'rejected'): 9
+  ('schema', 'basic', 'kept'): 2
+  ('schema', 'basic', 'rejected'): 6
+  ('schema', 'professional', 'kept'): 4
+  ('schema', 'professional', 'rejected'): 5
