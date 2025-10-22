@@ -31,48 +31,48 @@ Key pool sizes (for proportional sampling):
 
 We use the Wald half-width formula for proportions to set overall sampling targets:
 
-[
+$$
 E = z_{1-\alpha/2} \cdot \sqrt{ \frac{p(1-p)}{n} } \quad \Rightarrow \quad n = \frac{z_{1-\alpha/2}^2, p(1-p)}{E^2}
-]
+$$
 
-* Confidence level: (95%) → (z_{1-\alpha/2}=1.96)
-* Conservative proportion: (p=0.5) unless domain priors justify otherwise
+* Confidence level: $95%$ → $z_{1-\alpha/2}=1.96$
+* Conservative proportion: $p=0.5$ unless domain priors justify otherwise
 
 **Targets used here**
 
 * **Overall Kept precision (pooled):** larger than per-method (n=400) → CI narrower than per-method
-* **Eliminated false-negative rate:** (n=100) → CI ≈ ±5–6% (for (p\approx 0.10))
+* **Eliminated false-negative rate:** $n=100$ → CI ≈ ±5–6% (for $p\approx 0.10$)
 
 ### 3.2 Powered **Method comparison** (two-proportion design)
 
 We power the Prompt vs Schema comparison on the **Kept** items.
 
 **Null vs. alternative**
-[
+$$
 H_0: p_1 = p_2 \quad \text{vs} \quad H_1: p_1 \neq p_2
-]
+$$
 
 **Two-proportion z-test statistic (for reporting):**
-[
+$$
 \hat p_1 = \tfrac{x_1}{n_1},; \hat p_2 = \tfrac{x_2}{n_2},; \hat p = \tfrac{x_1+x_2}{n_1+n_2}
-]
-[
+$$
+$$
 Z = \frac{\hat p_1 - \hat p_2}{\sqrt{\hat p(1-\hat p)\left(\tfrac{1}{n_1}+\tfrac{1}{n_2}\right)}}
-]
+$$
 
-**Approximate per-arm sample size for detecting a difference (\Delta=|p_1-p_2|)** at 2-sided (\alpha) and power (1-\beta):
-[
+**Approximate per-arm sample size for detecting a difference $\Delta=|p_1-p_2|$** at 2-sided $\alpha$ and power $1-\beta$:
+$$
 \boxed{; n_{\text{per method}} ;\approx; \frac{\left[ z_{1-\alpha/2},\sqrt{2,\bar p(1-\bar p)}; +; z_{1-\beta},\sqrt{p_1(1-p_1) + p_2(1-p_2)}\right]^2}{\Delta^2} ;}
-]
-with (\bar p=(p_1+p_2)/2). In absence of priors, set (p_1\approx p_2\approx 0.5) for a conservative bound.
+$$
+with ($\bar p=(p_1+p_2)/2$). In absence of priors, set $p_1\approx p_2\approx 0.5$ for a conservative bound.
 
 **Practical-min choice**
 
-* (n_1=n_2=200) Kept per method → **400 Kept total**
-  ≈80% power to detect **(\Delta\approx 12)** percentage points at (\alpha=0.05).
-  Per-method Wald CI (worst case (p\approx0.5)): **±6.9%**.
+* $n_1=n_2=200$ Kept per method → **400 Kept total**
+  ≈80% power to detect **$\Delta\approx 12$** percentage points at $\alpha=0.05$.
+  Per-method Wald CI (worst case $p\approx0.5$): **±6.9%**.
 
-> If you need (\Delta=10) points, increase to ≈293 per method (see Notes).
+> If you need $\Delta=10$ points, increase to ≈293 per method (see Notes).
 
 ---
 
@@ -196,7 +196,7 @@ Outputs:
 
 | Measure                       | Target / Expectation                       | Achieved Through                            |
 | ----------------------------- | ------------------------------------------ | ------------------------------------------- |
-| **Method comparison**         | ~80% power to detect (\Delta\approx12) pts | 200 Kept per method + two-proportion z-test |
+| **Method comparison**         | ~80% power to detect $\Delta\approx12$ pts | 200 Kept per method + two-proportion z-test |
 | **Per-method precision CI**   | ≈ ±6.9% (worst-case p≈0.5)                 | n=200 per method                            |
 | **Overall Kept precision CI** | tighter than per-method (n=400)            | pooled estimate                             |
 | **False-Negative Rate CI**    | ≈ ±5–6%                                    | n=100 Eliminated                            |
@@ -208,5 +208,5 @@ Outputs:
 
 ### Notes & Options
 
-* If you later need **(\Delta=10)-point** detection, increase Kept per method toward **~293** (total 586) and κ block to 120; per-annotator time ≈ **15.8 h**.
+* If you later need **$\Delta=10$-point** detection, increase Kept per method toward **~293** (total 586) and κ block to 120; per-annotator time ≈ **15.8 h**.
 * All splits above are **proportional** to preserve the original Method×Persona composition.
