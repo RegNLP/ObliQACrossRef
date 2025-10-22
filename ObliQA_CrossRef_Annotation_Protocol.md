@@ -23,6 +23,20 @@ Key pool sizes (for proportional sampling):
 * **Kept:** Prompt–Basic 534, Prompt–Prof 808, Schema–Basic 246, Schema–Prof 378 (total **1,966**)
 * **Eliminated:** Prompt–Basic 1,181, Prompt–Prof 911, Schema–Basic 610, Schema–Prof 483 (total **3,185**)
 
+### Table 1. Generation and Curation Statistics
+
+| Stage                        | Prompt Basic | Prompt Prof | **Prompt Total** | Schema Basic | Schema Prof | **Schema Total** |
+| :--------------------------- | -----------: | ----------: | ---------------: | -----------: | ----------: | ---------------: |
+| **Step 1 – Generation**      |        1,715 |       1,719 |        **3,434** |          856 |         861 |        **1,717** |
+| **Step 2 – Curation**        |              |             |                  |              |             |                  |
+| Kept                         |          534 |         808 |        **1,342** |          246 |         378 |          **624** |
+| Kept %                       |       31.14% |       47.0% |       **39.08%** |       28.74% |       43.9% |       **36.34%** |
+| Rejected                     |        1,181 |         911 |        **2,092** |          610 |         483 |        **1,093** |
+| └─ Reject — target-only      |          566 |         395 |          **961** |          396 |         259 |          **655** |
+| └─ Reject — source-only      |          554 |         439 |          **993** |          158 |         137 |          **295** |
+| └─ Reject — incorrect answer |           35 |          58 |           **93** |           43 |          76 |          **119** |
+| └─ Reject — other            |           26 |          19 |           **45** |           13 |          11 |           **24** |
+
 ---
 
 ## 3. Sample Size Rationale (Practical-min) **with formulas**
@@ -64,7 +78,7 @@ $$
 $$
 \boxed{; n_{\text{per method}} ;\approx; \frac{\left[ z_{1-\alpha/2},\sqrt{2,\bar p(1-\bar p)}; +; z_{1-\beta},\sqrt{p_1(1-p_1) + p_2(1-p_2)}\right]^2}{\Delta^2} ;}
 $$
-with ($\bar p=(p_1+p_2)/2$). In absence of priors, set $p_1\approx p_2\approx 0.5$ for a conservative bound.
+with (\bar p=(p_1+p_2)/2). In absence of priors, set $p_1\approx p_2\approx 0.5$ for a conservative bound.
 
 **Practical-min choice**
 
