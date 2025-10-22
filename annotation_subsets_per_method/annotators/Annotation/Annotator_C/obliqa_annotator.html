@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ObliQA-CrossRef Annotator (CSV)</title>
+  <style>
+    :root { --bg:#0b1020; --card:#111735; --muted:#8aa0ff; --text:#e7ecff; --accent:#7aa2ff; --line:#1e2a5a; }
+    html, body { height:100%; }
+    body { margin:0; background:var(--bg); color:var(--text); font:14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+
+    header { display:flex; align-items:center; gap:12px; padding:12px 16px; background:#0d1533; position:sticky; top:0; z-index:3; border-bottom:1px solid var(--line); }
+    header h1 { font-size:16px; margin:0; letter-spacing:0.3px; }
+    header .spacer { flex:1; }
+    .btn { background:var(--card); border:1px solid #263371; color:var(--text); padding:8px 12px; border-radius:10px; cursor:pointer; }
+    .btn:hover { border-color:#3a54a0; }
+
+    /* >>> changed to 50/50 split */
+    .app { display:grid; grid-template-columns: 1fr 1fr; min-height:calc(100vh - 56px); }
+    @media (max-width: 1100px){
+      .app { grid-template-columns: 1fr; } /* stack on small screens */
+    }
+
+    .panel { padding:16px; border-right:1px solid var(--line); background:var(--card); }
+    .panel .card { background:#0f1531; border:1px solid #1b2554; border-radius:14px; padding:12px; margin-bottom:12px; }
+    .panel h2 { font-size:12px; text-transform:uppercase; color:var(--muted); margin:0 0 8px; letter-spacing:0.4px; }
+    .panel pre { white-space:pre-wrap; margin:6px 0 0; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+
+    .main { padding:16px; }
+    .toolbar { display:flex; gap:8px; align-items:center; margin-bottom:12px; flex-wrap:wrap; }
+    .toolbar .btn[disabled] { opacity:0.4; pointer-events:none; }
+    .progress { height:8px; background:#0f1531; border:1px solid #1b2554; border-radius:999px; overflow:hidden; margin-left:auto; min-width:240px; }
+    .progress > div { height:100%; background:linear-gradient(90deg, var(--accent), #9ec9ff); width:0%; }
+
+    .qa { display:grid; grid-template-columns: 1fr; gap:12px; }
+    .block { background:#0f1531; border:1px solid #1b2554; border-radius:14px; padding:14px; }
+    .qgroup legend { font-weight:600; color:#cdd7ff; margin-bottom:8px; }
+    .opt { display:flex; align-items:center; gap:8px; margin:6px 0; }
+    .opt input { transform: scale(1.15); }
+    textarea { width:100%; min-height:64px; resize:vertical; background:#0e1430; color:#e7ecff; border:1px solid #1b2554; border-radius:10px; padding:8px; }
+
+    .nav { display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
+    .nav .primary { background:var(--accent); color:#08112b; border:none; }
+
+    .meta { display:flex; gap:10px; flex-wrap:wrap; font-size:12px; color:#aab7ff; }
+    .meta span { background:#0e1430; border:1px solid #1b2554; padding:4px 8px; border-radius:999px; }
+    .small { font-size:12px; color:#aab7ff; }
+
+    /* Modal */
+    .modal-backdrop {
+      position:fixed; inset:0; background:rgba(0,0,20,0.65);
+      display:none; align-items:center; justify-content:center; z-index:10;
+    }
+    .modal {
+      width:min(920px, calc(100vw - 32px));
+      max-height:calc(100vh - 80px);
+      background:#0f1531; border:1px solid #1b2554; border-radius:16px; overflow:hidden;
+      box-shadow:0 10px 40px rgba(0,0,0,0.5);
+    }
+    .modal header {
+      background:#0d1533; border-bottom:1px solid #1b2554; padding:10px 14px; display:flex; align-items:center; gap:10px;
+      position:sticky; top:0;
+    }
+    .modal header h2 { margin:0; font-size:15px; }
+    .modal .content { padding:14px; overflow:auto; max-height:calc(100vh - 140px); }
+    .modal .content h3 { margin:16px 0 6px; color:#cfe0ff; font-size:14px; }
+    .modal .content p, .modal .content li { color:#e7ecff; }
+    .modal footer { padding:12px 14px; border-top:1px solid #1b2554; background:#0d1533; display:flex; justify-content:flex-end; }
+  </style>
+</head>
+
+<body>
+    <header>
+        <h1>ObliQA-CrossRef Annotator (CSV)</h1>
+        <div class="spacer"></div>
+        <button id="btnHelp" class="btn" title="Show detailed instructions">Instructions</button>
+        <button id="btnStart" class="btn" title="Upload your assignment CSV">Start assignment</button>
+        <button id="btnSave" class="btn" title="Save locally and download updated CSV">Save progress</button>
+        <button id="btnContinue" class="btn" title="Open your last saved assignment">Continue</button>
+        <input id="fileInput" type="file" accept=".csv,text/csv" style="display:none" />
+    </header>
+
+    <div class="app">
+        <aside class="panel" id="left">
+            <h2>Item</h2>
+            <div class="card">
+                <div class="meta" id="meta"></div>
+                <div class="small" id="counts"></div>
+            </div>
+            <div class="card"><strong>THE QUESTION</strong>
+                <pre id="q"></pre>
+            </div>
+            <div class="card"><strong>RULE 1 (Source Text)</strong>
+                <pre id="s"></pre>
+            </div>
+            <div class="card"><strong>RULE 2 (Target Text)</strong>
+                <pre id="t"></pre>
+            </div>
+            <div class="card"><strong>PROPOSED ANSWER</strong>
+                <pre id="a"></pre>
+            </div>
+        </aside>
+
+        <main class="main">
+            <div class="toolbar">
+                <button id="prev" class="btn" title="Previous item">⟵ Previous</button>
+                <button id="next" class="btn" title="Next item">Next ⟶</button>
+                <div class="progress">
+                    <div id="bar"></div>
+                </div>
+            </div>
+
+            <div class="qa">
+                <section class="block">
+                    <fieldset class="qgroup">
+                        <legend>1) Is the question valid and well-formed?</legend>
+                        <label class="opt"><input type="radio" name="q1" value="yes"> Yes — clear and understandable</label>
+                        <label class="opt"><input type="radio" name="q1" value="not_realistic"> No — not_realistic — unlikely or not a practical question for these rules</label>
+                        <label class="opt"><input type="radio" name="q1" value="unclear_or_ungrammatical"> No — unclear_or_ungrammatical — confusing wording or broken grammar</label>
+                        <label class="opt"><input type="radio" name="q1" value="nonsensical"> No — nonsensical — doesn’t make sense even with these rules</label>
+                    </fieldset>
+                </section>
+
+                <section class="block">
+                    <fieldset class="qgroup">
+                        <legend>2) Which text(s) are needed to answer?</legend>
+                        <label class="opt"><input type="radio" name="q2" value="both"> Both rules are required together.</label>
+                        <label class="opt"><input type="radio" name="q2" value="rule1"> Rule 1 alone is sufficient.</label>
+                        <label class="opt"><input type="radio" name="q2" value="rule2"> Rule 2 alone is sufficient.</label>
+                        <label class="opt"><input type="radio" name="q2" value="neither"> Neither rule answers the question.</label>
+                        <label class="opt"><input type="radio" name="q2" value="more_info"> The rules hint at it, but more rules or details are needed.</label>
+                    </fieldset>
+                </section>
+
+                <section class="block">
+                    <fieldset class="qgroup">
+                        <legend>3) Is the provided answer correct and complete (based only on these two rules)?</legend>
+                        <label class="opt"><input type="radio" name="q3" value="yes"> Yes, sufficient — correct and covers what’s needed</label>
+                        <label class="opt"><input type="radio" name="q3" value="no"> No, the answer is incorrect, incomplete, or unsupported</label>
+                    </fieldset>
+                </section>
+
+                <section class="block">
+                    <fieldset class="qgroup">
+                        <legend>4) Final Decision</legend>
+                        <label class="opt"><input type="radio" name="final" value="keep"> Keep</label>
+                        <label class="opt"><input type="radio" name="final" value="eliminate"> Eliminate</label>
+                    </fieldset>
+                    <div style="margin-top:8px">
+                        <label class="small">Optional comment (1–2 short clauses)</label>
+                        <textarea id="comment" placeholder="Optional: brief justification"></textarea>
+                    </div>
+                </section>
+
+                <div class="nav">
+                    <button id="prev2" class="btn" title="Previous item">⟵ Previous</button>
+                    <button id="next2" class="btn primary" title="Next item">Next ⟶</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Instructions Modal -->
+    <div id="helpBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modal" aria-labelledby="helpTitle">
+            <header>
+                <h2 id="helpTitle">Regulatory Question &amp; Answer Annotation — Detailed Guide</h2>
+                <div class="spacer"></div>
+                <button id="helpCloseTop" class="btn">Close</button>
+            </header>
+            <div class="content">
+                <p><strong>The Goal:</strong> Evaluate the quality of AI-generated answers to regulatory questions. Decide if the <em>Proposed Answer</em> correctly and completely answers the <em>Question</em>, using <em>only</em> the two provided rules (<em>Rule 1</em> and <em>Rule 2</em>). Do <strong>not</strong> use outside knowledge.</p>
+
+                <h3>Your Task for Each Item</h3>
+                <p>Read the <strong>Question</strong>, <strong>Rule 1</strong>, <strong>Rule 2</strong>, and the <strong>Proposed Answer</strong>. Then answer Q1–Q4. Base your judgments <strong>strictly</strong> on the provided text.</p>
+
+                <h3>Q1) Is the question valid and well-formed?</h3>
+                <ul>
+                    <li><strong>Yes — clear and understandable:</strong> Grammatical and logically coherent.</li>
+                    <li><strong>No — not_realistic:</strong> Very unlikely a real user would ask this in practice.</li>
+                    <li><strong>No — unclear_or_ungrammatical:</strong> Confusing wording or broken grammar.</li>
+                    <li><strong>No — nonsensical:</strong> Doesn’t make sense even with these rules.</li>
+                </ul>
+
+                <h3>Q2) Which text(s) are needed to answer?</h3>
+                <ul>
+                    <li><strong>Both:</strong> Must combine Rule 1 and Rule 2.</li>
+                    <li><strong>Rule 1:</strong> Rule 1 alone suffices.</li>
+                    <li><strong>Rule 2:</strong> Rule 2 alone suffices.</li>
+                    <li><strong>Neither:</strong> The required information is missing from both.</li>
+                    <li><strong>More info:</strong> Rules are on-topic but lack the specific detail needed.</li>
+                </ul>
+
+                <h3>Q3) Is the provided answer correct and complete?</h3>
+                <ul>
+                    <li><strong>Yes, sufficient:</strong> Factually correct and includes all key information supported by the rules.</li>
+                    <li><strong>No:</strong> Incorrect, incomplete, or unsupported (claims not grounded in the rules).</li>
+                </ul>
+
+                <h3>Q4) Final Decision</h3>
+                <ul>
+                    <li><strong>Keep:</strong> High-quality item (question sensible, answer supported and sufficient).</li>
+                    <li><strong>Eliminate:</strong> Significant flaw (e.g., invalid question or unsupported/incorrect answer).</li>
+                </ul>
+
+                <p class="small">Tip: Keep comments brief (1–2 clauses) and cite which rule(s) your decision relies on if helpful (e.g., “Both: R2 lists records; R1 links requestability”).</p>
+            </div>
+            <footer>
+                <button id="helpCloseBottom" class="btn">Close</button>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // ======== CSV helpers ========
+        function csvParse(text) {
+            const rows = [];
+            let i = 0,
+                field = '',
+                row = [],
+                inQuotes = false;
+
+            function endField() {
+                row.push(field);
+                field = '';
+            }
+
+            function endRow() {
+                rows.push(row);
+                row = [];
+            }
+            while (i < text.length) {
+                const c = text[i];
+                if (inQuotes) {
+                    if (c === '"') {
+                        if (text[i + 1] === '"') {
+                            field += '"';
+                            i += 2;
+                            continue;
+                        }
+                        inQuotes = false;
+                        i++;
+                        continue;
+                    } else {
+                        field += c;
+                        i++;
+                        continue;
+                    }
+                } else {
+                    if (c === '"') {
+                        inQuotes = true;
+                        i++;
+                        continue;
+                    }
+                    if (c === ',') {
+                        endField();
+                        i++;
+                        continue;
+                    }
+                    if (c === '\r') {
+                        i++;
+                        continue;
+                    }
+                    if (c === '\n') {
+                        endField();
+                        endRow();
+                        i++;
+                        continue;
+                    }
+                    field += c;
+                    i++;
+                }
+            }
+            endField();
+            endRow();
+            if (rows.length && rows[rows.length - 1].length === 1 && rows[rows.length - 1][0] === '') rows.pop();
+            return rows;
+        }
+
+        function csvStringify(rows) {
+            function esc(v) {
+                const s = String(v ?? '');
+                return (/[",\n]/.test(s)) ? '"' + s.replace(/"/g, '""') + '"' : s;
+            }
+            return rows.map(r => r.map(esc).join(',')).join('\n') + '\n';
+        }
+
+        // ======== App State ========
+        let table = [];
+        let header = [];
+        let col = {};
+        let idx = 0;
+        let currentFileKey = null;
+
+        const REQUIRED_COLS = ["qa_id", "question", "expected_answer", "source_text", "target_text"];
+        const ANN_COLS = ["1_question_valid", "2_needed", "3_answer_correct", "4_final_decision", "5_comment"];
+
+        const els = {
+            fileInput: document.getElementById('fileInput'),
+            btnStart: document.getElementById('btnStart'),
+            btnSave: document.getElementById('btnSave'),
+            btnContinue: document.getElementById('btnContinue'),
+            btnHelp: document.getElementById('btnHelp'),
+            helpBackdrop: document.getElementById('helpBackdrop'),
+            helpCloseTop: document.getElementById('helpCloseTop'),
+            helpCloseBottom: document.getElementById('helpCloseBottom'),
+            prev: document.getElementById('prev'),
+            prev2: document.getElementById('prev2'),
+            next: document.getElementById('next'),
+            next2: document.getElementById('next2'),
+            q: document.getElementById('q'),
+            s: document.getElementById('s'),
+            t: document.getElementById('t'),
+            a: document.getElementById('a'),
+            meta: document.getElementById('meta'),
+            counts: document.getElementById('counts'),
+            bar: document.getElementById('bar'),
+            comment: document.getElementById('comment')
+        };
+
+        function localKeyCSV(fileKey) {
+            return 'obliqa_csv_' + fileKey;
+        }
+
+        function localKeyPos(fileKey) {
+            return 'obliqa_csv_pos_' + fileKey;
+        }
+        const LATEST_KEY = 'obliqa_csv_latest_fileKey';
+
+        // ======== Utilities ========
+        function mapHeader() {
+            header = table[0] || [];
+            col = {};
+            header.forEach((name, i) => {
+                col[String(name).trim()] = i;
+            });
+            let changed = false;
+            for (const name of ANN_COLS) {
+                if (!(name in col)) {
+                    header.push(name);
+                    col[name] = header.length - 1;
+                    changed = true;
+                }
+            }
+            if (changed) table[0] = header;
+        }
+
+        function get(rowIdx, name) {
+            const i = col[name];
+            if (i == null) return '';
+            const row = table[rowIdx];
+            if (!row) return '';
+            return String(row[i] ?? '');
+        }
+
+        function set(rowIdx, name, value) {
+            const i = col[name];
+            if (i == null) return;
+            const row = table[rowIdx];
+            while (row.length < header.length) row.push('');
+            row[i] = String(value ?? '');
+        }
+
+        function totalRows() {
+            return Math.max(0, table.length - 1);
+        }
+
+        function doneCount() {
+            let n = 0;
+            for (let r = 1; r < table.length; r++) {
+                if (get(r, "4_final_decision")) n++;
+            }
+            return n;
+        }
+
+        function savePosition() {
+            localStorage.setItem(localKeyPos(currentFileKey), String(idx));
+        }
+
+        // ======== Rendering ========
+        function setRadio(name, value) {
+            document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+                r.checked = (r.value === value);
+            });
+        }
+
+        function getRadio(name) {
+            const r = document.querySelector(`input[name="${name}"]:checked`);
+            return r ? r.value : '';
+        }
+
+        function show(iData) {
+            if (table.length <= 1) {
+                els.q.textContent = els.s.textContent = els.t.textContent = els.a.textContent = '';
+                els.meta.innerHTML = '<span>No assignment loaded</span>';
+                els.counts.textContent = '';
+                els.bar.style.width = '0%';
+                els.prev.disabled = els.prev2.disabled = true;
+                els.next.disabled = els.next2.disabled = true;
+                return;
+            }
+            const N = totalRows();
+            idx = Math.max(1, Math.min(table.length - 1, iData));
+            savePosition();
+
+            const qa_id = get(idx, "qa_id");
+            els.q.textContent = get(idx, "question") || '(empty)';
+            els.s.textContent = get(idx, "source_text") || '(empty)';
+            els.t.textContent = get(idx, "target_text") || '(empty)';
+            els.a.textContent = get(idx, "expected_answer") || '(empty)';
+
+            els.meta.innerHTML = `<span>qa_id: ${qa_id||'(missing)'}</span><span>item ${idx} / ${N}</span>`;
+            const done = doneCount();
+            els.counts.textContent = `${done} labeled / ${N} total`;
+            els.bar.style.width = ((done / Math.max(1, N)) * 100).toFixed(1) + '%';
+
+            setRadio('q1', get(idx, "1_question_valid"));
+            setRadio('q2', get(idx, "2_needed"));
+            setRadio('q3', get(idx, "3_answer_correct"));
+            setRadio('final', get(idx, "4_final_decision"));
+            els.comment.value = get(idx, "5_comment");
+
+            els.prev.disabled = els.prev2.disabled = (idx === 1);
+            els.next.disabled = els.next2.disabled = (idx === table.length - 1);
+        }
+
+        function collectAndSave() {
+            if (table.length <= 1) return;
+            set(idx, "1_question_valid", getRadio('q1'));
+            set(idx, "2_needed", getRadio('q2'));
+            set(idx, "3_answer_correct", getRadio('q3'));
+            set(idx, "4_final_decision", getRadio('final'));
+            set(idx, "5_comment", els.comment.value.trim());
+            const csvText = csvStringify(table);
+            localStorage.setItem(localKeyCSV(currentFileKey), csvText);
+            savePosition();
+        }
+
+        // ======== Load/Save ========
+        async function startAssignment() {
+            document.getElementById('fileInput').click();
+        }
+
+        function saveProgress() {
+            if (table.length <= 1) {
+                alert('No assignment loaded. Click "Start assignment" to upload a CSV.');
+                return;
+            }
+            collectAndSave();
+            localStorage.setItem(LATEST_KEY, currentFileKey);
+            const blob = new Blob([csvStringify(table)], {
+                type: 'text/csv'
+            });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            const base = (currentFileKey || 'annotations').replace(/[^a-zA-Z0-9_.-]+/g, '_');
+            a.download = base.replace(/\.csv$/i, '') + '_updated.csv';
+            a.click();
+        }
+
+        function continueAssignment() {
+            const latest = localStorage.getItem(LATEST_KEY);
+            if (!latest) {
+                alert('No saved assignment found on this device. Use "Start assignment" to upload a CSV.');
+                return;
+            }
+            const csvText = localStorage.getItem(localKeyCSV(latest));
+            if (!csvText) {
+                alert('Saved assignment metadata found but CSV content missing. Re-upload via "Start assignment".');
+                return;
+            }
+            currentFileKey = latest;
+            table = csvParse(csvText);
+            if (!table.length) {
+                alert('Saved CSV is empty or invalid.');
+                return;
+            }
+            mapHeader();
+            const posRaw = localStorage.getItem(localKeyPos(currentFileKey));
+            const pos = posRaw != null ? parseInt(posRaw, 10) : NaN;
+            if (!Number.isNaN(pos) && pos >= 1 && pos < table.length) {
+                show(pos);
+            } else {
+                let first = 1;
+                for (let r = 1; r < table.length; r++)
+                    if (!get(r, "4_final_decision")) {
+                        first = r;
+                        break;
+                    } show(first);
+            }
+        }
+
+        // ======== Events ========
+        document.getElementById('fileInput').addEventListener('change', async (e) => {
+            const f = e.target.files[0];
+            if (!f) return;
+            const text = await f.text();
+            const parsed = csvParse(text);
+            if (!parsed.length) {
+                alert('CSV appears empty or invalid.');
+                return;
+            }
+
+            currentFileKey = f.name.replace(/\W+/g, '_');
+            table = parsed;
+            mapHeader();
+            for (const req of ["qa_id", "question", "expected_answer", "source_text", "target_text"]) {
+                if (!(req in col)) {
+                    alert('Missing required column: ' + req);
+                    return;
+                }
+            }
+            localStorage.setItem(localKeyCSV(currentFileKey), csvStringify(table));
+            localStorage.setItem(LATEST_KEY, currentFileKey);
+
+            let first = 1;
+            for (let r = 1; r < table.length; r++) {
+                if (!get(r, "4_final_decision")) {
+                    first = r;
+                    break;
+                }
+            }
+            show(first);
+        });
+
+        document.getElementById('btnStart').addEventListener('click', startAssignment);
+        document.getElementById('btnSave').addEventListener('click', saveProgress);
+        document.getElementById('btnContinue').addEventListener('click', continueAssignment);
+
+        document.getElementById('prev').addEventListener('click', () => {
+            collectAndSave();
+            show(idx - 1);
+        });
+        document.getElementById('prev2').addEventListener('click', () => {
+            collectAndSave();
+            show(idx - 1);
+        });
+        document.getElementById('next').addEventListener('click', () => {
+            collectAndSave();
+            show(idx + 1);
+        });
+        document.getElementById('next2').addEventListener('click', () => {
+            collectAndSave();
+            show(idx + 1);
+        });
+
+        // Radios/comment live save
+        for (const n of ['q1', 'q2', 'q3', 'final']) {
+            document.querySelectorAll(`input[name="${n}"]`).forEach(el => el.addEventListener('change', collectAndSave));
+        }
+        document.getElementById('comment').addEventListener('change', collectAndSave);
+        document.getElementById('comment').addEventListener('blur', collectAndSave);
+
+        // ======== Instructions Modal ========
+        function openHelp() {
+            els.helpBackdrop.style.display = 'flex';
+            els.helpBackdrop.setAttribute('aria-hidden', 'false');
+        }
+
+        function closeHelp() {
+            els.helpBackdrop.style.display = 'none';
+            els.helpBackdrop.setAttribute('aria-hidden', 'true');
+        }
+        els.btnHelp.addEventListener('click', openHelp);
+        els.helpCloseTop.addEventListener('click', closeHelp);
+        els.helpCloseBottom.addEventListener('click', closeHelp);
+        els.helpBackdrop.addEventListener('click', (e) => {
+            if (e.target === els.helpBackdrop) closeHelp();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeHelp();
+        });
+
+        // initial
+        (function init() {})();
+    </script>
+</body>
+
+</html>
