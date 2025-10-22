@@ -1,0 +1,82 @@
+{
+  "seed": 13,
+  "plan": "practical_min",
+  "targets": {
+    "kept_totals": {
+      "prompt|basic": 80,
+      "prompt|professional": 120,
+      "schema|basic": 79,
+      "schema|professional": 121
+    },
+    "kappa_counts": {
+      "prompt|basic": 25,
+      "prompt|professional": 37,
+      "schema|basic": 11,
+      "schema|professional": 17
+    },
+    "elim_totals": {
+      "prompt|basic": 37,
+      "prompt|professional": 29,
+      "schema|basic": 19,
+      "schema|professional": 15
+    }
+  },
+  "produced": {
+    "kappa_shared_total": 90,
+    "kept_singles_total": 310,
+    "elim_singles_total": 100
+  },
+  "annotators": {
+    "Annotator_A": {
+      "total": 230,
+      "breakdown": {
+        "kappa_shared|prompt|basic|kept": 25,
+        "kappa_shared|prompt|professional|kept": 37,
+        "kappa_shared|schema|basic|kept": 11,
+        "kappa_shared|schema|professional|kept": 17,
+        "single|prompt|basic|kept": 19,
+        "single|prompt|basic|eliminated": 13,
+        "single|prompt|professional|kept": 28,
+        "single|prompt|professional|eliminated": 10,
+        "single|schema|basic|kept": 23,
+        "single|schema|basic|eliminated": 7,
+        "single|schema|professional|kept": 35,
+        "single|schema|professional|eliminated": 5
+      }
+    },
+    "Annotator_B": {
+      "total": 227,
+      "breakdown": {
+        "kappa_shared|prompt|basic|kept": 25,
+        "kappa_shared|prompt|professional|kept": 37,
+        "kappa_shared|schema|basic|kept": 11,
+        "kappa_shared|schema|professional|kept": 17,
+        "single|prompt|basic|kept": 18,
+        "single|prompt|basic|eliminated": 12,
+        "single|prompt|professional|kept": 28,
+        "single|prompt|professional|eliminated": 10,
+        "single|schema|basic|kept": 23,
+        "single|schema|basic|eliminated": 6,
+        "single|schema|professional|eliminated": 5,
+        "single|schema|professional|kept": 35
+      }
+    },
+    "Annotator_C": {
+      "total": 223,
+      "breakdown": {
+        "kappa_shared|prompt|basic|kept": 25,
+        "kappa_shared|prompt|professional|kept": 37,
+        "kappa_shared|schema|basic|kept": 11,
+        "kappa_shared|schema|professional|kept": 17,
+        "single|prompt|basic|eliminated": 12,
+        "single|prompt|basic|kept": 18,
+        "single|prompt|professional|kept": 27,
+        "single|prompt|professional|eliminated": 9,
+        "single|schema|basic|eliminated": 6,
+        "single|schema|basic|kept": 22,
+        "single|schema|professional|kept": 34,
+        "single|schema|professional|eliminated": 5
+      }
+    }
+  }
+}

@@ -135,7 +135,7 @@ python -u src/judge_qas_baseline.py \
   --rate_delay 0.2
 
 -------
-python -u src/make_annotation_subsets_per_method. \
+python -u src/make_annotation_subsets_per_method.py \
   --schema_kept outputs/qas_from_schema_V2_kept.jsonl \
   --schema_elim outputs/qas_from_schema_V2_eliminated.jsonl \
   --prompt_kept outputs/qas_baseline_judgement_kept.jsonl \
@@ -144,10 +144,18 @@ python -u src/make_annotation_subsets_per_method. \
   --seed 13
 
 
+python -u src/jsonl_to_csv.py annotation_subsets_per_method/annotators/Annotator_A.jsonl annotation_subsets_per_method/annotators/Annotator_A.csv
+python -u src/jsonl_to_csv.py annotation_subsets_per_method/annotators/Annotator_B.jsonl annotation_subsets_per_method/annotators/Annotator_B.csv
+python -u src/jsonl_to_csv.py annotation_subsets_per_method/annotators/Annotator_C.jsonl annotation_subsets_per_method/annotators/Annotator_C.csv
 
-python -u src/jsonl_to_csv_qas.py \
-  --input outputs/annotation_sample_50.jsonl \
-  --output outputs/annotation_sample_50.csv
+pip install openpyxl
+
+python -u src/csv_to_validated_xlsx.py annotation_subsets_per_method/annotators/Annotator_A.csv annotation_subsets_per_method/annotators/Annotator_A.xlsx
+python -u src/csv_to_validated_xlsx.py annotation_subsets_per_method/annotators/Annotator_B.csv annotation_subsets_per_method/annotators/Annotator_B.xlsx
+python -u src/csv_to_validated_xlsx.py annotation_subsets_per_method/annotators/Annotator_C.csv annotation_subsets_per_method/annotators/Annotator_C.xlsx
+
+
+
 
 
 
