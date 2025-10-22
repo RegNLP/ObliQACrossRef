@@ -1,150 +1,150 @@
-# ObliQA-CrossRef Human Annotation and Gold Subset Protocol
+# ObliQA-CrossRef Human Annotation and Gold Subset Protocol (Practical-min)
 
 ## 1. Purpose and Rationale
 
-The human annotation phase serves two interconnected objectives:
+**Primary goals**
 
-1. **Validate the automatic (LLM-as-a-Judge) curation process.**
-   The LLM-as-a-Judge step filtered large amounts of automatically generated question–answer (QA) pairs.
-   Human validation is required to quantify how accurate those automated “Keep/Eliminate” decisions were, measuring:
+1. **Method comparison (Prompt vs Schema)** on precision of LLM-Kept items.
+2. **Validation of LLM-as-a-Judge** (overall precision of Kept; false-negative rate in Eliminated; reliability).
+3. **Produce a human-verified Gold subset** (ObliQA-CrossRef-Gold).
 
-   * the **precision** of the LLM-Kept subset,
-   * the **false-negative rate** within the LLM-Eliminated subset, and
-   * the **inter-annotator agreement** (reliability) among experts.
-
-2. **Create a high-quality human-verified Gold subset.**
-   The final, human-confirmed “Kept” items form the **ObliQA-CrossRef-Gold** dataset.
-   This set provides a trusted benchmark for evaluating question answering and reasoning models on cross-referential regulatory text.
-
-This design balances **statistical robustness** with **practical feasibility**, ensuring scientific validity without over-burdening the limited pool of expert annotators.
+This setup balances statistical power for the **method comparison** with feasible expert workload.
 
 ---
 
 ## 2. Background: Data Generation and Automatic Curation
 
-The ObliQA-CrossRef dataset was constructed in two stages:
-1️⃣ **Generation:** LLM-based question–answer creation for each cross-reference pair.
-2️⃣ **Curation:** Automatic filtering using the LLM-as-a-Judge method.
+Two-stage construction:
+1️⃣ **Generation** of QA pairs per cross-reference.
+2️⃣ **Curation** with LLM-as-a-Judge → Kept vs Eliminated.
 
-### Table 1. Generation and Curation Statistics
+Key pool sizes (for proportional sampling):
 
-| Stage                                  | **Method 1: Prompting** |                      |             | **Method 2: Schema** |                      |             |
-| :------------------------------------- | :---------------------: | :------------------: | :---------: | :------------------: | :------------------: | :---------: |
-|                                        |      Basic Persona      | Professional Persona |  **Total**  |     Basic Persona    | Professional Persona |  **Total**  |
-| **Step 1 – Generation**                |          1 715          |         1 719        |  **3 434**  |          856         |          861         |  **1 717**  |
-| **Step 2 – Curation (LLM-as-a-Judge)** |                         |                      |             |                      |                      |             |
-| Kept                                   |           534           |          808         |  **1 342**  |          246         |          378         |   **624**   |
-| Kept %                                 |         31.14 %         |        47.0 %        | **39.08 %** |        28.74 %       |        43.9 %        | **36.34 %** |
-| Rejected                               |          1 181          |          911         |  **2 092**  |          610         |          483         |  **1 093**  |
-| └─ Reject target-only                  |           566           |          395         |   **961**   |          396         |          259         |   **655**   |
-| └─ Reject source-only                  |           554           |          439         |   **993**   |          158         |          137         |   **295**   |
-| └─ Reject incorrect answer             |            35           |          58          |    **93**   |          43          |          76          |   **119**   |
-| └─ Reject other                        |            26           |          19          |    **45**   |          13          |          11          |    **24**   |
-
-**Interpretation.**
-
-* The LLM retained ≈ 39 % of Prompting and 36 % of Schema QA pairs as seemingly valid.
-* Rejections were dominated by *target-only* and *source-only* cases, where the answer relied on incomplete context.
-* Automatic curation is effective but imperfect—hence the need for **human verification** to confirm that “Kept” items are genuinely correct and to quantify the error among rejections.
+* **Kept:** Prompt–Basic 534, Prompt–Prof 808, Schema–Basic 246, Schema–Prof 378 (total **1,966**)
+* **Eliminated:** Prompt–Basic 1,181, Prompt–Prof 911, Schema–Basic 610, Schema–Prof 483 (total **3,185**)
 
 ---
 
-## 3. Why These Annotation Numbers Were Chosen
+## 3. Sample Size Rationale (Practical-min) **with formulas**
 
-### Statistical grounding
+### 3.1 Overall estimates (Wald CI for a single proportion)
 
-The sample sizes were derived using the **Wald confidence interval formula** for proportions:
+We use the Wald half-width formula for proportions to set overall sampling targets:
 
-$$
-E = z \times \sqrt{ \frac{p(1-p)}{n} }
-$$
+[
+E = z_{1-\alpha/2} \cdot \sqrt{ \frac{p(1-p)}{n} } \quad \Rightarrow \quad n = \frac{z_{1-\alpha/2}^2, p(1-p)}{E^2}
+]
 
-Rearranging for ( n ):
+* Confidence level: (95%) → (z_{1-\alpha/2}=1.96)
+* Conservative proportion: (p=0.5) unless domain priors justify otherwise
 
-$$
-n = \frac{z^2 \times p(1-p)}{E^2}
-$$
+**Targets used here**
 
-Where:
+* **Overall Kept precision (pooled):** larger than per-method (n=400) → CI narrower than per-method
+* **Eliminated false-negative rate:** (n=100) → CI ≈ ±5–6% (for (p\approx 0.10))
 
-* ( z = 1.96 ) for 95% confidence level,
-* ( p ) = expected proportion (worst-case = 0.5),
-* ( E ) = desired half-width of the confidence interval (precision).
+### 3.2 Powered **Method comparison** (two-proportion design)
 
-| Estimate            | Desired half-width (E) | Expected proportion (p) | Formula                 |             Result |
-| ------------------- | ---------------------: | ----------------------: | ----------------------- | -----------------: |
-| Precision of Kept   |                  ± 6 % |        0.5 (worst-case) | n=(1.96² × p(1-p)) / E² |              ≈ 270 |
-| False-negative rate |                  ± 5 % |                    0.10 | n=(1.96² × p(1-p)) / E² |              ≈ 120 |
-| Reliability (κ)     |      ± 0.10 half-width |          3-rater design | empirical simulation    | 120 triple-labeled |
-| Human time          |           3 min / item |    ≤ 10.5 h / annotator | fits these values       |                    |
+We power the Prompt vs Schema comparison on the **Kept** items.
 
-These counts ensure:
+**Null vs. alternative**
+[
+H_0: p_1 = p_2 \quad \text{vs} \quad H_1: p_1 \neq p_2
+]
 
-* statistically meaningful confidence intervals (±5–6 %),
-* balanced representation across **Method × Persona**, and
-* feasible workload for 3 domain annotators.
+**Two-proportion z-test statistic (for reporting):**
+[
+\hat p_1 = \tfrac{x_1}{n_1},; \hat p_2 = \tfrac{x_2}{n_2},; \hat p = \tfrac{x_1+x_2}{n_1+n_2}
+]
+[
+Z = \frac{\hat p_1 - \hat p_2}{\sqrt{\hat p(1-\hat p)\left(\tfrac{1}{n_1}+\tfrac{1}{n_2}\right)}}
+]
+
+**Approximate per-arm sample size for detecting a difference (\Delta=|p_1-p_2|)** at 2-sided (\alpha) and power (1-\beta):
+[
+\boxed{; n_{\text{per method}} ;\approx; \frac{\left[ z_{1-\alpha/2},\sqrt{2,\bar p(1-\bar p)}; +; z_{1-\beta},\sqrt{p_1(1-p_1) + p_2(1-p_2)}\right]^2}{\Delta^2} ;}
+]
+with (\bar p=(p_1+p_2)/2). In absence of priors, set (p_1\approx p_2\approx 0.5) for a conservative bound.
+
+**Practical-min choice**
+
+* (n_1=n_2=200) Kept per method → **400 Kept total**
+  ≈80% power to detect **(\Delta\approx 12)** percentage points at (\alpha=0.05).
+  Per-method Wald CI (worst case (p\approx0.5)): **±6.9%**.
+
+> If you need (\Delta=10) points, increase to ≈293 per method (see Notes).
 
 ---
 
-## 4. Composition of the Human Annotation Subset
+## 4. Composition of the Human Annotation Subset (Proportional)
+
+All allocations are **proportional to the original pools** (not equal quarters).
+
+### 4.1 Kept (for precision & method comparison) — **400 total**
+
+* **Per method totals:** Prompt **200**, Schema **200**
+* **Within-method persona splits (proportional):**
+
+  * Prompt: **Basic 80**, **Professional 120**
+  * Schema: **Basic 79**, **Professional 121**
+
+#### κ block (triple-labeled, **90** total; proportional to Kept pools)
+
+* Prompt–Basic **25**, Prompt–Prof **37**, Schema–Basic **11**, Schema–Prof **17**
+
+#### Kept singles (400 − 90 = **310**)
+
+* Prompt–Basic **55**, Prompt–Prof **83**  → **Prompt singles 138**
+* Schema–Basic **68**, Schema–Prof **104** → **Schema singles 172**
+
+### 4.2 Eliminated (for FNR) — **100 total** (proportional to Eliminated pools)
+
+* Prompt–Basic **37**, Prompt–Prof **29**, Schema–Basic **19**, Schema–Prof **15**
+
+### 4.3 Summary table
 
 | Bucket                          | Unique Items | Prompt–Basic | Prompt–Prof | Schema–Basic | Schema–Prof |
 | ------------------------------- | -----------: | -----------: | ----------: | -----------: | ----------: |
-| **Kept (Triple-Labeled for κ)** |      **120** |           30 |          30 |           30 |          30 |
-| **Kept (Single-Labeled)**       |      **150** |           38 |          37 |           37 |          38 |
-| **Kept Subtotal (Gold)**        |      **270** |       **68** |      **67** |       **67** |      **68** |
-| **Eliminated (Single-Labeled)** |      **120** |           30 |          30 |           30 |          30 |
-| **Grand Total (Unique)**        |      **390** |       **98** |      **97** |       **97** |      **98** |
-
-* Both **Basic** and **Professional** personas are preserved to maintain linguistic and conceptual diversity.
-* Internal vs External references remain proportionally balanced within each cell.
+| **Kept (κ, triple-labeled)**    |           90 |           25 |          37 |           11 |          17 |
+| **Kept (single-labeled)**       |          310 |           55 |          83 |           68 |         104 |
+| **Kept Total**                  |          400 |           80 |         120 |           79 |         121 |
+| **Eliminated (single-labeled)** |          100 |           37 |          29 |           19 |          15 |
+| **Grand Total (Unique)**        |          500 |          117 |         149 |           98 |         136 |
 
 ---
 
 ## 5. Annotation Load and Logistics
 
-| Component      | Unique Items | Raters / Item | Total Labels | Labels / Annotator |      Time @ 3 min / item |
-| -------------- | -----------: | ------------: | -----------: | -----------------: | -----------------------: |
-| Kept (κ block) |          120 |             3 |          360 |                120 |                      6 h |
-| Kept (Single)  |          150 |             1 |          150 |                 50 |                    2.5 h |
-| Eliminated     |          120 |             1 |          120 |                 40 |                      2 h |
-| **Totals**     |      **390** |             — |      **630** |            **210** | **≈ 10.5 h / annotator** |
+| Component      | Unique Items | Raters / Item | Total Labels | Labels / Annotator* | Time @ 3 min |
+| -------------- | -----------: | ------------: | -----------: | ------------------: | -----------: |
+| Kept (κ block) |           90 |             3 |          270 |                  90 |        4.5 h |
+| Kept (Singles) |          310 |             1 |          310 |             103–104 |   ~5.2–5.2 h |
+| Eliminated     |          100 |             1 |          100 |               33–34 |   ~1.7–1.8 h |
+| **Totals**     |      **500** |             — |      **680** |         **226–227** |  **≈11.3 h** |
 
-Each annotator therefore labels:
-
-* 120 shared items (κ block),
-* 50 unique Kept items, and
-* 40 unique Eliminated items.
+*3 annotators. Each labels all 90 κ items + an equal share of singles.
 
 ---
 
 ## 6. Step-by-Step Procedure
 
-### Step 1. Input preparation
+### Step 1 — Inputs
 
-Load four automatically curated files (per method):
+Use the four curated JSONLs:
 
 * `outputs/qas_baseline_judgement_kept.jsonl`
 * `outputs/qas_baseline_judgement_eliminated.jsonl`
 * `outputs/qas_from_schema_V2_kept.jsonl`
 * `outputs/qas_from_schema_V2_eliminated.jsonl`
+  Fields: `Question`, `SourceText`, `TargetText`, `Answer`, `Method`, `Persona`, `ReferenceType`.
 
-Each record contains:
-`Question`, `SourceText`, `TargetText`, `Answer`, `Method`, `Persona`, `ReferenceType`.
+### Step 2 — Stratified, **Proportional** Sampling (seed=13)
 
-### Step 2. Stratified sampling (per method)
+* **Kept:** sample **200 per method**; split **within-method** across personas proportionally (Prompt: 80/120; Schema: 79/121).
+* Inside Kept, reserve **90** items as a **shared κ block** with the counts above; the remainder are **Kept singles** per cell.
+* **Eliminated:** sample **100 total**, proportional to Eliminated pools across Method×Persona (37/29/19/15).
 
-Using a fixed random seed (e.g., 13):
-
-* Sample **60 Kept (per method)** → all three annotators (labeled for κ).
-* Sample **75 additional Kept (per method)** → distributed evenly across annotators (single-label).
-* Sample **60 Eliminated (per method)** → distributed evenly across annotators (single-label).
-  Totals: **Kept 270** (120 shared + 150 singles) and **Eliminated 120** (singles).
-  Maintain proportional balance for Personas (Basic / Professional) when both exist.
-
-### Step 3. Assignment generation
-
-Run the sampling script:
+### Step 3 — Assignment Generation
 
 ```bash
 python make_annotation_subsets_per_method.py \
@@ -153,17 +153,16 @@ python make_annotation_subsets_per_method.py \
   --prompt_kept outputs/qas_baseline_judgement_kept.jsonl \
   --prompt_elim outputs/qas_baseline_judgement_eliminated.jsonl \
   --outdir ./annotation_subsets_per_method \
-  --seed 13
+  --seed 13 \
+  --plan practical_min
 ```
 
-Generates files:
+Outputs:
 
-* `shared/kept_kappa_shared.jsonl`
-* `annotators/Annotator_{A,B,C}.jsonl` (merged per annotator)
+* `shared/kept_kappa_shared.jsonl` (90 items with cell tags matching the table)
+* `annotators/Annotator_{A,B,C}.jsonl` (balanced singles + all κ items)
 
-### Step 4. Annotation interface
-
-Use a consistent form (Google Form / Label Studio) with fields:
+### Step 4 — Annotation Interface (consistent form)
 
 1. **Question validity** (well-formed / unrealistic).
 2. **Required context** (Source / Target / Both / More info).
@@ -171,45 +170,43 @@ Use a consistent form (Google Form / Label Studio) with fields:
 4. **Final decision** (Keep / Eliminate).
 5. **Comment** (short justification).
 
-### Step 5. Post-processing and analysis
+### Step 5 — Post-Processing & Analysis
 
-Aggregate all labels:
+* **Precision (overall & per method):** human Keep / total LLM-Kept.
 
-* **Precision (Kept)** = Human Keep / Total LLM-Kept → ± 6 %.
-* **False-Negative Rate (Eliminated)** = Human Keep / Total LLM-Eliminated → ± 5 %.
-* **Reliability:** compute pairwise Cohen’s κ and Fleiss’ κ (over 120 shared items).
-* Derive the **Gold subset** = Kept items confirmed by majority vote / consensus.
+  * Report **per-method** CIs and a **two-proportion z-test** (Prompt vs Schema).
+* **False-Negative Rate (overall):** human Keep / total LLM-Eliminated.
+* **Reliability:** Cohen’s κ (pairwise) and Fleiss’ κ on the **90** shared Kept.
+* **Gold set:** majority/consensus over Kept.
 
-### Step 6. Deliverables
+### Step 6 — Deliverables
 
-| Output                           | Description                        |
-| -------------------------------- | ---------------------------------- |
-| `annotation_subsets_per_method/` | Generated stratified JSONL subsets |
-| `Annotator_{A,B,C}.jsonl`        | Individual annotation input files  |
-| `precision_FN_kappa_report.csv`  | Summary statistics                 |
-| `ObliQA-CrossRef-Gold.jsonl`     | Human-verified gold dataset        |
-| `README_AnnotationProtocol.md`   | Full documentation (this file)     |
-
----
-
-## 7. Expected Outcomes
-
-| Measure               |               Target | Achieved Through                       |
-| --------------------- | -------------------: | -------------------------------------- |
-| Precision of LLM Kept |      ± 6 % @ 95 % CI | 270 Kept samples (135 per method)      |
-| False-Negative Rate   |      ± 5 % @ 95 % CI | 120 Eliminated samples (60 per method) |
-| Inter-Annotator κ     |    half-width ≈ ±0.1 | 120 triple-labeled Kept                |
-| Gold subset size      |          ≈ 270 items | Human consensus over Kept              |
-| Workload              | ≈ 10.5 h / annotator | 630 labels total                       |
+| Output                           | Description                            |
+| -------------------------------- | -------------------------------------- |
+| `annotation_subsets_per_method/` | Stratified, proportional JSONL subsets |
+| `Annotator_{A,B,C}.jsonl`        | Individual assignment files            |
+| `kept_kappa_shared.jsonl`        | 90 shared Kept for κ                   |
+| `precision_FN_kappa_report.csv`  | Overall & per-method stats + κ         |
+| `ObliQA-CrossRef-Gold.jsonl`     | Human-verified gold dataset            |
+| `README_AnnotationProtocol.md`   | This documentation                     |
 
 ---
 
-### Summary
+## 7. Expected Outcomes (Practical-min)
 
-This protocol ensures:
+| Measure                       | Target / Expectation                       | Achieved Through                            |
+| ----------------------------- | ------------------------------------------ | ------------------------------------------- |
+| **Method comparison**         | ~80% power to detect (\Delta\approx12) pts | 200 Kept per method + two-proportion z-test |
+| **Per-method precision CI**   | ≈ ±6.9% (worst-case p≈0.5)                 | n=200 per method                            |
+| **Overall Kept precision CI** | tighter than per-method (n=400)            | pooled estimate                             |
+| **False-Negative Rate CI**    | ≈ ±5–6%                                    | n=100 Eliminated                            |
+| **Inter-annotator κ**         | stable estimate                            | 90 triple-labeled Kept                      |
+| **Gold subset size**          | ≈ 400 items (post-consensus)               | majority/consensus on Kept                  |
+| **Workload**                  | ≈ 11.3 h / annotator                       | 226–227 labels @ 3 min/item                 |
 
-* statistically validated assessment of LLM-based filtering,
-* a reliable human-verified Gold benchmark, and
-* efficient use of expert time without compromising quality or representativeness.
+---
 
-The result is a balanced, interpretable, and reproducible foundation for evaluating regulatory QA models on multi-passage, cross-reference reasoning tasks.
+### Notes & Options
+
+* If you later need **(\Delta=10)-point** detection, increase Kept per method toward **~293** (total 586) and κ block to 120; per-annotator time ≈ **15.8 h**.
+* All splits above are **proportional** to preserve the original Method×Persona composition.
